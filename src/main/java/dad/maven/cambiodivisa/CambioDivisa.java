@@ -36,6 +36,7 @@ public class CambioDivisa extends Application {
 		primerBox.setAlignment(Pos.CENTER);
 		cambioText=new TextField();
 		cambioText.setMaxWidth(75);
+		
 		divisaCombo2=new ComboBox<Divisa>();
 		divisaCombo2.getItems().addAll(euro,libra,dolar,yen);
 		divisaCombo2.getSelectionModel().select(0);
@@ -52,6 +53,7 @@ public class CambioDivisa extends Application {
 		primaryStage.setTitle("CambioDivisa");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
 	}
 
 	private void onCambiarButton() {
@@ -63,6 +65,8 @@ public class CambioDivisa extends Application {
 		double cant=Double.parseDouble(dineroText.getText());
 		Divisa.fromTo(divisaEntrada, divisaSalida,cant);
 		cambioText.setText(Divisa.fromTo(divisaEntrada, divisaSalida,cant).toString());
+		cambioText.disableProperty();
+		
 	}catch (NumberFormatException e1) {
 		error.setTitle("Fallastes");
 		error.setHeaderText("Introduce un numero");
